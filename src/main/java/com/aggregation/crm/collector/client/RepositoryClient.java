@@ -1,5 +1,6 @@
 package com.aggregation.crm.collector.client;
 
+import com.aggregation.crm.collector.execption.HttpClientException;
 import com.aggregation.crm.repository.model.AggregationExecution;
 import com.aggregation.crm.repository.model.CrmCase;
 import com.aggregation.crm.repository.model.CrmProducer;
@@ -11,12 +12,12 @@ import java.util.List;
 @Component
 public interface RepositoryClient {
 
-    LocalDateTime getLastCaseModifiedDate(CrmProducer crmProducer);
+    LocalDateTime getLastCaseModifiedDate(CrmProducer crmProducer) throws HttpClientException;
 
-    void saveCases(List<? extends CrmCase> entities);
+    void saveCases(List<? extends CrmCase> entities) throws HttpClientException;
 
-    void saveExecution(AggregationExecution entity);
+    void saveExecution(AggregationExecution entity) throws HttpClientException;
 
-    LocalDateTime getLastExecutionDate(CrmProducer crmProducer);
+    LocalDateTime getLastExecutionDate(CrmProducer crmProducer) throws HttpClientException;
 
 }

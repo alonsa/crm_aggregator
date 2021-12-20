@@ -1,9 +1,8 @@
 package com.aggregation.crm.repository.model;
 
+import com.aggregation.crm.web.execption.ParseException;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import javax.validation.ValidationException;
 
 public enum CaseStatus {
     @JsonProperty("open")
@@ -13,12 +12,12 @@ public enum CaseStatus {
     @JsonAlias("closed")
     CLOSED;
 
-    public static CaseStatus fromString(String str) {
+    public static CaseStatus fromString(String str) throws ParseException {
         for (CaseStatus status: CaseStatus.values()){
             if (status.name().equals(str.toUpperCase())){
                 return status;
             }
         }
-        throw new ValidationException("No Enum with name " + str);
+        throw new ParseException(String.format("For CaseStatus Enum, No match for str %s", str));
     }
 }

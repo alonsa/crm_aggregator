@@ -31,20 +31,6 @@ public class CaseControllerTest {
     private CollectorClient controllerClient;
 
     @Test
-    public void getByFilterStatusClosedAndOtherValuesAreNull() throws Exception {
-        MockHttpServletRequestBuilder request = get("/case/filter?status=Closed");
-        this.mockMvc.perform(request).andDo(print()).andExpect(status().isOk());
-        verify(caseService).getByFilter("Closed", null, null);
-    }
-
-    @Test
-    public void getByFilterAllValuesFilled() throws Exception {
-        MockHttpServletRequestBuilder request = get("/case/filter?status=Open&providerName=pName&errorCode=eCode");
-        this.mockMvc.perform(request).andDo(print()).andExpect(status().isOk());
-        verify(caseService).getByFilter("Open", "pName", "eCode");
-    }
-
-    @Test
     public void getReportByFilterStatusClosedAndOtherValuesAreNull() throws Exception {
         MockHttpServletRequestBuilder request = get("/case/report?status=Closed");
         this.mockMvc.perform(request).andDo(print()).andExpect(status().isOk());
