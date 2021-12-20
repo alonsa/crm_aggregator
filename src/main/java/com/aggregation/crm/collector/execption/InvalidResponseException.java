@@ -1,0 +1,7 @@
+package com.aggregation.crm.collector.execption;
+
+public class InvalidResponseException extends Exception {
+    public InvalidResponseException(String message) {
+        super(message);
+    }
+}
