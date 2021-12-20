@@ -19,7 +19,7 @@ public class BananaCollectorServiceImpl extends CollectorServiceImpl<BananaListC
 
     private final Logger logger = LoggerFactory.getLogger(BananaCollectorServiceImpl.class);
 
-    @Value("${services.banana.url}")
+    @Value("${services.banana.url: http://localhost:8083/crm/banana}")
     private String url;
 
     public BananaCollectorServiceImpl(RepositoryClient repositoryClient, RestTemplateBuilder restTemplateBuilder) {

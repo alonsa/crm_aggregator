@@ -30,13 +30,13 @@ public class WebCaseServiceImpl implements WebCaseService {
         List<CrmCase> supportCases = repositoryClient.findByStatusAndProvider(status, providerName, errorCode);
 
         return supportCases.stream()
-                .collect(Collectors.groupingBy(crmCase -> Pair.of(crmCase.getErrorCode(), crmCase.getProductName())))
+                .collect(Collectors.groupingBy(crmCase -> Pair.of(crmCase.getErrorCode(), crmCase.getProvider())))
                 .entrySet()
                 .stream().map(entry -> {
                     String caseErrorCode = entry.getKey().getFirst();
-                    String caseProductName = entry.getKey().getSecond();
+                    String caseProvider = entry.getKey().getSecond();
                     List<CrmCase> groupedSupportCases = entry.getValue();
-                    return new ReportResponse(caseErrorCode, caseProductName, groupedSupportCases);
+                    return new ReportResponse(caseProvider, caseErrorCode, groupedSupportCases);
         }).collect(Collectors.toList());
     }
 

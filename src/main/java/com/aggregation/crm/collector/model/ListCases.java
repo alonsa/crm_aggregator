@@ -6,21 +6,21 @@ import java.util.List;
 import java.util.Objects;
 
 public class ListCases<E extends CrmCase> {
-    private List<E> date = List.of();
+    private List<E> data = List.of();
 
     public ListCases() {
     }
 
     public ListCases(List<E> date) {
-        this.date = date;
+        this.data = date;
     }
 
-    public List<E> getDate() {
-        return date;
+    public List<E> getData() {
+        return data;
     }
 
-    public void setDate(List<E> date) {
-        this.date = date;
+    public void setData(List<E> data) {
+        this.data = data;
     }
 
     @Override
@@ -28,11 +28,11 @@ public class ListCases<E extends CrmCase> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ListCases that = (ListCases) o;
-        return Objects.equals(getDate(), that.getDate());
+        return Objects.equals(getData(), that.getData());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getDate());
+        return Objects.hash(getData());
     }
 }

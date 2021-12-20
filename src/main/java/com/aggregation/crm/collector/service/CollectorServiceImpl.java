@@ -106,6 +106,6 @@ public abstract class CollectorServiceImpl<E extends ListCases<? extends CrmCase
             throw new InvalidResponseException(errorMsg);
         }
 
-        return entity.getDate();
+        return entity.getData();
     }
 }

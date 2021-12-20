@@ -55,7 +55,7 @@ public class RepositoryController {
     }
 
     @GetMapping("/execution/last")
-    public ResponseEntity<LocalDateTime> addAll(@RequestParam() CrmProducer crmProducer) throws DaoException {
+    public ResponseEntity<LocalDateTime> getLastExecutionDate(@RequestParam() CrmProducer crmProducer) throws DaoException {
         logger.info(String.format("get execution last date by crm provider [%s] request", crmProducer));
         LocalDateTime lastExecutionDate = executionService.getLastDateByCrmProducer(crmProducer);
         logger.info(String.format("execution update date is: %s", lastExecutionDate));
