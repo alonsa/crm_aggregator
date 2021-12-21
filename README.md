@@ -22,6 +22,6 @@ Params:\
 "supportCaseNumber": 1\
 }]\
 
-###Refresh data a report
+###Refresh data a report\
 Method: PUT\
 Path: <host>:8080/case/aggregate/all
