@@ -28,6 +28,7 @@ public class WebCaseServiceImpl implements WebCaseService {
     public List<ReportResponse> getReportByFilter(String status, String providerName, String errorCode) throws HttpClientException, ParseException {
         logger.info(String.format("get a crm cases with filters: status=[%s], providerName=[%s] and errorCode=[%s]", status, providerName, errorCode));
         List<CrmCase> supportCases = repositoryClient.findByStatusAndProvider(status, providerName, errorCode);
+        logger.info(String.format("got %d cases from repository client ", supportCases.size()));
 
         return supportCases.stream()
                 .collect(Collectors.groupingBy(crmCase -> Pair.of(crmCase.getErrorCode(), crmCase.getProvider())))

@@ -41,15 +41,15 @@ public class RepositoryController {
 
     @GetMapping("/case/modified/last")
     public ResponseEntity<LocalDateTime> getLastModifiedDateByCrmProducer(@RequestParam() CrmProducer crmProducer) throws DaoException {
-        logger.info(String.format("get last update date by crm provider [%s] request", crmProducer));
+        logger.debug(String.format("get last update date by crm provider [%s] request", crmProducer));
         LocalDateTime lastUpdatedDate = caseService.getLastModifiedDateByCrmProducer(crmProducer);
-        logger.info(String.format("case update date is: %s", lastUpdatedDate));
+        logger.debug(String.format("case update date is: %s", lastUpdatedDate));
         return new ResponseEntity<>(lastUpdatedDate, HttpStatus.OK);
     }
 
     @PostMapping("/case/add/all")
     public ResponseEntity<CrmCase> addAll(@RequestBody List<? extends CrmCase> cases) throws DaoException {
-        logger.info(String.format("get add all crm cases request with [%d] cases", cases.size()));
+        logger.debug(String.format("get add all crm cases request with [%d] cases", cases.size()));
         caseService.save(cases);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -58,7 +58,7 @@ public class RepositoryController {
     public ResponseEntity<LocalDateTime> getLastExecutionDate(@RequestParam() CrmProducer crmProducer) throws DaoException {
         logger.info(String.format("get execution last date by crm provider [%s] request", crmProducer));
         LocalDateTime lastExecutionDate = executionService.getLastDateByCrmProducer(crmProducer);
-        logger.info(String.format("execution update date is: %s", lastExecutionDate));
+        logger.debug(String.format("execution update date is: %s", lastExecutionDate));
         return new ResponseEntity<>(lastExecutionDate, HttpStatus.OK);
     }
 

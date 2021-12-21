@@ -83,7 +83,7 @@ public class RepositoryClientImpl implements RepositoryClient {
 
     @Override
     public LocalDateTime getLastExecutionDate(CrmProducer crmProducer) throws HttpClientException {
-        String url = UriComponentsBuilder.fromHttpUrl(this.lastExecutionUrl).queryParam("CrmProducer", crmProducer).toUriString();
+        String url = UriComponentsBuilder.fromHttpUrl(this.lastExecutionUrl).queryParam("crmProducer", crmProducer).toUriString();
         logger.info(String.format("about to get last execution date by making a GET call to %s", url));
 
         try {

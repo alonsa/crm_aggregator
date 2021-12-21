@@ -15,6 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RepositoryClientImpl implements RepositoryClient {
@@ -33,11 +34,20 @@ public class RepositoryClientImpl implements RepositoryClient {
     @Override
     public List<CrmCase> findByStatusAndProvider(String status, String provider, String errorCode) throws ParseException, HttpClientException {
         CaseStatus caseStatus = (status != null) ? CaseStatus.fromString(status) : null;
-        String url = UriComponentsBuilder.fromHttpUrl(CASES_URL)
-                .queryParam("status", caseStatus)
-                .queryParam("providerName", provider)
-                .queryParam("errorCode", errorCode)
-                .toUriString();
+        UriComponentsBuilder urlBuilder = UriComponentsBuilder.fromHttpUrl(CASES_URL);
+        if (caseStatus != null){
+            urlBuilder = urlBuilder.queryParam("status", caseStatus);
+        }
+
+        if (provider != null){
+            urlBuilder = urlBuilder.queryParam("providerName", provider);
+        }
+
+        if (errorCode != null){
+            urlBuilder = urlBuilder.queryParam("errorCode", errorCode);
+        }
+
+        String url = urlBuilder.toUriString();
 
         logger.info(String.format("about to get crm cases by making a GET call to %s", url));
         CrmCase[] responseArray;

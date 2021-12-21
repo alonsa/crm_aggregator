@@ -31,7 +31,7 @@ public class CollectorClientImpl implements CollectorClient {
         try {
             restTemplate.put(executeUrl, null);
         } catch (RestClientException e) {
-            String errorMsg = String.format("Fail to execute GET call to %s", executeUrl);
+            String errorMsg = String.format("Fail to execute PUT call to %s", executeUrl);
             logger.error(errorMsg);
             throw new HttpClientException(errorMsg);
         }
